@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sidebar Portfolio</title>
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    /* Menu icon */
+    .menu-icon {
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      font-size: 28px;
+      cursor: pointer;
+      z-index: 1000;
+      color: #222;
+    }
+    /* Sidebar */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background: #222;
+      color: white;
+      transition: left 0.3s ease;
+      padding-top: 20px;
+      z-index: 999;
+    }
+    .sidebar.active {
+      left: 0;
+    }
+    .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 24px;
+      cursor: pointer;
+    }
+    /* Profile */
+    .profile {
+      text-align: center;
+      margin-top: 40px;
+    }
+    .profile img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 3px solid white;
+    }
+    .profile h3 {
+      margin: 10px 0;
+    }
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      font-size: 20px;
+    }
+    .social-icons a {
+      color: white;
+      transition: color 0.3s;
+    }
+    .social-icons a:hover {
+      color: #00acee;
+    }
+    /* Menu links */
+    .menu-links {
+      list-style: none;
+      padding: 0;
+      margin-top: 20px;
+    }
+    .menu-links li {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .menu-links li a {
+      display: flex;
+      align-items: center;
+      padding: 12px 20px;
+      color: white;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+    .menu-links li a i {
+      margin-right: 10px;
+      font-size: 18px;
+    }
+    .menu-links li a:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+    /* Sections for testing scroll */
+    section {
+      height: 100vh;
+      padding: 20px;
+    }
+    #header { background: lightcoral; }
+    #about { background: lightblue; }
+    #education { background: lightgreen; }
+    #skills { background: lightsalmon; }
+    #portfolio { background: lightpink; }
+    #contacts { background: lightseagreen; }
+  </style>
+</head>
+<body>
+
+<!-- Menu icon -->
+<div class="menu-icon" id="menu-btn"><i class='bx bx-menu'></i></div>
+
+<!-- Sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="close-btn" id="close-btn"><i class='bx bx-x'></i></div>
+
+  <!-- Profile -->
+  <div class="profile">
+    <img src="https://via.placeholder.com/150" alt="Profile">
+    <h3>Your Name</h3>
+    <div class="social-icons">
+      <a href="https://linkedin.com" target="_blank"><i class='bx bxl-linkedin'></i></a>
+      <a href="https://instagram.com" target="_blank"><i class='bx bxl-instagram'></i></a>
+      <a href="mailto:yourmail@example.com"><i class='bx bxl-gmail'></i></a>
+      <a href="tel:+1234567890"><i class='bx bxs-phone'></i></a>
+    </div>
+  </div>
+
+  <!-- Menu -->
+  <ul class="menu-links">
+    <li><a href="#header"><i class='bx bx-home'></i> Home</a></li>
+    <li><a href="#about"><i class='bx bx-user'></i> About</a></li>
+    <li><a href="#education"><i class='bx bx-book'></i> Education</a></li>
+    <li><a href="#skills"><i class='bx bx-brain'></i> Skills</a></li>
+    <li><a href="#portfolio"><i class='bx bx-code-alt'></i> Projects</a></li>
+    <li><a href="https://drive.google.com/file/d/1SuXFHxruUbCPSuHQbdoSZitlJAh2a0uI/view?usp=sharing" target="_blank"><i class='bx bx-file'></i> Resume</a></li>
+    <li><a href="#contacts"><i class='bx bx-envelope'></i> Contact</a></li>
+  </ul>
+</div>
+
+<!-- Sections -->
+<section id="header"><h1>Home</h1></section>
+<section id="about"><h1>About</h1></section>
+<section id="education"><h1>Education</h1></section>
+<section id="skills"><h1>Skills</h1></section>
+<section id="portfolio"><h1>Projects</h1></section>
+<section id="contacts"><h1>Contact</h1></section>
+
+<script>
+  const menuBtn = document.getElementById('menu-btn');
+  const sidebar = document.getElementById('sidebar');
+  const closeBtn = document.getElementById('close-btn');
+
+  menuBtn.addEventListener('click', () => {
+    sidebar.classList.add('active');
+  });
+  closeBtn.addEventListener('click', () => {
+    sidebar.classList.remove('active');
+  });
+  document.querySelectorAll('.menu-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      sidebar.classList.remove('active');
+    });
+  });
+</script>
+</body>
+</html>
